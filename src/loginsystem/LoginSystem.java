@@ -65,12 +65,18 @@ public class LoginSystem {
         do{
             System.out.println("Input your username: ");
             usernm = new Scanner(System.in).nextLine();
+            if (!isUniqueName(usernm)){
+                System.out.println("The username is already in use.");
+            }
         } while (!isUniqueName(usernm));
         
         // Ask user for their password and input the response until the password is strong
         do{
             System.out.println("Input your password (more than 5 letters, should have upper/lower case letter, number and special character: ");
             pass = new Scanner(System.in).nextLine();
+            if (!isPasswordStrong(pass)){
+                System.out.println("The password is weak.");
+            }
         } while (!isPasswordStrong(pass));
         
         // encrypt the password with a salt
