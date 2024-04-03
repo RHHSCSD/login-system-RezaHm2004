@@ -45,6 +45,9 @@ public class LoginSystem {
         
     }
     
+    /**
+     * This is class LoginSystem that creates object that can register or login a user
+     */
     public LoginSystem() {
         // load users from file
         loadUsers();
