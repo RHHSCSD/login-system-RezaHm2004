@@ -4,6 +4,9 @@
  */
 package loginsystem;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  *
  * @author rezahm
@@ -12,25 +15,27 @@ public class EncryptionMachine {
 
     // declaring data for the user class
     private static String encrypted;
-    private static String decrypted;
     
     /**
      * This method encrypts a password
      * @param pass: String
      * @return encrypted password: String
      */
-    public static String encrypt(String pass){
-        encrypted = pass;
-        return encrypted;
-    }
+    public static String encrypt(String pass) {
+        try {
+            //java helper class to perform encryption
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //give the helper function the password
+            md.update(pass.getBytes());
+            //perform the encryption
+            byte byteData[] = md.digest();
+            //To express the byte data as a hexadecimal number (the normal way)
+            for (int i = 0; i < byteData.length; ++i) {
+                encrypted += (Integer.toHexString((byteData[i] & 0xFF) | 0x100).substring(1,3));}
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println(ex);
+        }
     
-    /**
-     * This method decrypts a encrypted password
-     * @param enpass
-     * @return 
-     */
-    public static String decrypt(String enpass){
-        decrypted = enpass;
-        return decrypted;
+        return encrypted;
     }
 }

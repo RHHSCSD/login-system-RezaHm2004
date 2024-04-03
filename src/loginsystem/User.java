@@ -13,8 +13,8 @@ public class User {
     // declaring data for the user class
     private String name;
     private String username;
-    private String password;
     private String encryptedPass;
+    private String salt;
     private int age;
     private String gender;
     
@@ -22,27 +22,27 @@ public class User {
      * This a a class to create a user.
      * @param name: String
      * @param username: String
-     * @param password: String
      * @param encryptedPass: String
+     * @param salt: String
      * @param age: Int
      * @param gender: String
      */
-    public User(String name, String username, String password, String encryptedPass, int age, String gender) {
+    public User(String name, String username, String encryptedPass, String salt, int age, String gender) {
         this.name = name;
         this.username = username;
-        this.password = password;
         this.encryptedPass = encryptedPass;
+        this.salt = salt;
         this.age = age;
         this.gender = gender;
     }
     
     /**
      * This method returns the user's detail
-     * @return 
+     * @return detail: (String)
      */
     @Override
     public String toString(){
-       String detail = "User: \nUsername: " + username + "\n" + "Name: " + name + "\n" + "Age: " + age + "\n" + "Gender: " + gender + "\n";
+       String detail = "User: \nUsername: " + username + "\nName: " + name + "\nAge: " + age + "\nGender: " + gender + "\n";
        return detail;
     }
     
@@ -63,19 +63,19 @@ public class User {
     }
 
     /**
-     * This method returns the user's password
-     * @return password: (String)
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
      * This method returns the user's encrypted password
      * @return encrypted password: (String)
      */
     public String getEncryptedPass() {
         return encryptedPass;
+    }
+    
+    /**
+     * This method returns the user's salt for password
+     * @return salt: (String)
+     */
+    public String getSalt() {
+        return salt;
     }
 
     /**
