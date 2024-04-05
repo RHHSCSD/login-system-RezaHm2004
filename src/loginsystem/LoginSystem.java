@@ -22,26 +22,12 @@ public class LoginSystem {
     final String DELIMETER = ",";
     final String USERSFILE = "Users.txt";
     ArrayList<User> users = new ArrayList<User>();
-    boolean isLoggedin = false;
             
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        LoginSystem l = new LoginSystem();
-        
-        // Ask user for the action they want to take
-        System.out.println("Do you want to register or login: (type: R or L) ");
-        String action = new Scanner(System.in).nextLine();
-        
-        // Based on the action choose the correct method
-        if (action.equals("R")){
-          l.register();  
-        } else if (action.equals("L")){
-          l.login();
-        }
         
     }
     
@@ -55,32 +41,24 @@ public class LoginSystem {
     
     /**
      * This a method to register a user
+     * @param usernm
+     * @param pass
+     * @param nm
+     * @param age
+     * @param gender
+     * @return 
      */
-    public void register(){
-        // Read all needed varaibles for the function
-        String usernm;
-        String pass;
-        
-        // A quick explanation of the function for the user
-        System.out.println("For registring you need to give some inputs, if the inputs are not correct you will be asked again.");
+    public int register(String usernm, String pass, String nm, int age, String gender){
         
         // Ask user for their username and input the response until the username is unique
-        do{
-            System.out.println("Input your username: ");
-            usernm = new Scanner(System.in).nextLine();
-            if (!isUniqueName(usernm)){
-                System.out.println("The username is already in use.");
-            }
-        } while (!isUniqueName(usernm));
+        if (!isUniqueName(usernm)){
+            return 1;
+        }
         
         // Ask user for their password and input the response until the password is strong
-        do{
-            System.out.println("Input your password (more than 5 letters, should have upper/lower case letter, number and special character: ");
-            pass = new Scanner(System.in).nextLine();
-            if (!isPasswordStrong(pass)){
-                System.out.println("The password is weak.");
-            }
-        } while (!isPasswordStrong(pass));
+        if (!isPasswordStrong(pass)){
+            return 2;
+        }
         
         // encrypt the password with a salt
         String[] passSalt = {pass, ""};
@@ -88,38 +66,19 @@ public class LoginSystem {
         String enpass = passSalt[0];
         String salt = passSalt[1];
         
-        // Ask user for their name and input the response
-        System.out.println("Input your name: ");
-        String nm = new Scanner(System.in).nextLine();
-        
-        // Ask user for their age and input the response
-        System.out.println("Input your age: ");
-        int age = new Scanner(System.in).nextInt();
-        
-        // Ask user for their gender and input the response
-        System.out.println("Input your gender: ");
-        String gender = new Scanner(System.in).nextLine();
-        
         // Register the user
         saveUser(nm, usernm, enpass, salt, age, gender);
         
-        // Automatic login
-        System.out.println("You are registered and logged in, " + nm + ".");
-        isLoggedin = true;
+        return 0;
     }
     
     /**
      * This a method to login an existing user
+     * @param usernm
+     * @param pass
+     * @return 
      */
-    public void login(){
-        // Ask user for their username and input the response
-        System.out.println("Input your username: ");
-        String usernm = new Scanner(System.in).nextLine();
-            
-        // Ask user for theor password and input the response
-        System.out.println("Input your password (more than 5 letters, should have upper/lower case letter, number and special character: ");
-        String pass = new Scanner(System.in).nextLine();
-        
+    public int login(String usernm, String pass){
         // Chech for each user
         for (User u: users){
             // Check if the username exists
@@ -131,16 +90,15 @@ public class LoginSystem {
                 // Chech if the password is correct
                 if (u.getEncryptedPass().equals(enpass)){
                     // then login
-                    System.out.println("You are logged in, " + u.getName() + ".");
-                    isLoggedin = true;
+                    return 0;
+                } else {
+                    return 2;
                 }
             }
         }
         
-        // Error message
-        if (isLoggedin == false){
-            System.out.println("Sorry, the username or password is wrong.");
-        }
+        return 1;
+        
     }
     
     /**
