@@ -22,6 +22,7 @@ public class EncryptionMachine {
      * @return encrypted password: String
      */
     public static String encrypt(String pass) {
+        encrypted = "";
         try {
             //java helper class to perform encryption
             MessageDigest md = MessageDigest.getInstance("MD5");
