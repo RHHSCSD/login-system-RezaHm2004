@@ -41,22 +41,24 @@ public class LoginSystem {
     
     /**
      * This a method to register a user
-     * @param usernm
-     * @param pass
-     * @param nm
-     * @param age
-     * @param gender
-     * @return 
+     * @param usernm: Username (String)
+     * @param pass: Password (String)
+     * @param nm: Name (String)
+     * @param age: Age (int)
+     * @param gender: Gender (String)
+     * @return (int)
      */
     public int register(String usernm, String pass, String nm, int age, String gender){
         
-        // Ask user for their username and input the response until the username is unique
+        // Check if the username is unique
         if (!isUniqueName(usernm)){
+            // if the username exists return 1 as error
             return 1;
         }
         
-        // Ask user for their password and input the response until the password is strong
+        // Check if the password is strong
         if (!isPasswordStrong(pass)){
+            // if the password is weak return 2 as error
             return 2;
         }
         
@@ -69,14 +71,15 @@ public class LoginSystem {
         // Register the user
         saveUser(nm, usernm, enpass, salt, age, gender);
         
+        // if everything is good return 0
         return 0;
     }
     
     /**
      * This a method to login an existing user
-     * @param usernm
-     * @param pass
-     * @return 
+     * @param usernm: Username (String)
+     * @param pass: Password (String)
+     * @return (int)
      */
     public int login(String usernm, String pass){
         // Chech for each user
@@ -92,11 +95,13 @@ public class LoginSystem {
                     // then login
                     return 0;
                 } else {
+                    // if the password is wrong return 2 as error
                     return 2;
                 }
             }
         }
         
+        // if username does not exist return 1 as error
         return 1;
         
     }
@@ -105,15 +110,19 @@ public class LoginSystem {
      * This is a method to load all of the existing users
      */
     private void loadUsers(){
+        // If there is an error associated with files catch it
         try {
+            // Scan the users' file
             File f = new File(USERSFILE);
             Scanner sf = new Scanner(f);
+            // Load users' information into the ArrayList
             while (sf.hasNextLine()){
                 String s = sf.nextLine();
                 String[] strLst = s.split(DELIMETER);
                 User u = new User(strLst[0], strLst[1], strLst[2], strLst[3], Integer.parseInt(strLst[4]), strLst[5]);
                 users.add(u);
             }
+            // Close the file
             sf.close();
         } catch (IOException ex) {
             System.out.println(ex);
@@ -129,10 +138,13 @@ public class LoginSystem {
      * @param gender: (String)
      */
     private void saveUser(String nm, String usernm, String enpass, String salt, int age, String gender){
+        // If there is an error associated with files catch it
         try {
+            // Append to the file a new user's information
             File f = new File(USERSFILE);
             PrintWriter pf = new PrintWriter(new FileWriter(f,true));
             pf.println(nm + DELIMETER + usernm + DELIMETER + enpass + DELIMETER + salt + DELIMETER + age + DELIMETER + gender);
+            // Close the file
             pf.close();
         } catch (IOException ex) {
             System.out.println(ex);

@@ -119,23 +119,29 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        // TODO add your handling code here:
+        // Login the user
         int response = l.login(username.getText(), password.getText());
+        // If the response of the login is 0
         if (response == 0){
+            // Give the user a success message with proper graphics
             jLabel4.setText("You are logged in!");
             jLabel4.setForeground(Color.black);
             passwordLabel.setForeground(Color.black);
             password.setForeground(Color.black);
             usernameLabel.setForeground(Color.black);
             username.setForeground(Color.black);
+        // If the response of the login is 1
         } else if (response == 1){
+            // Give the user an error message for username existance with proper graphics
             jLabel4.setText("Username does not exist!");
             jLabel4.setForeground(Color.red);
             passwordLabel.setForeground(Color.black);
             password.setForeground(Color.black);
             usernameLabel.setForeground(Color.red);
             username.setForeground(Color.red);
+        // If the response from the login is 2
         } else if (response == 2){
+            // Give the user an error message for password's correctness with proper graphics
             jLabel4.setText("Password is wrong!");
             jLabel4.setForeground(Color.red);
             passwordLabel.setForeground(Color.red);
@@ -146,7 +152,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_loginActionPerformed
 
     private void backToLoginSystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToLoginSystemActionPerformed
-        // TODO add your handling code here:
+        // Close the login page and open the main page
         setVisible(false);
         LoginSystemFrame.main(null);
     }//GEN-LAST:event_backToLoginSystemActionPerformed

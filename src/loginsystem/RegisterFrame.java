@@ -161,10 +161,13 @@ public class RegisterFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
-        // TODO add your handling code here:
+        // Catch errors associated with improper input
         try{
+            // Register the new user
             int response = l.register(username.getText(), password.getText(), name.getText(), Integer.parseInt(age.getText()), gender.getText());
+            // If the response from registration is 0
             if (response == 0){
+                // Give the user a success message with proper graphics
                 jLabel7.setText("You are logged in!");
                 extraLabel.setForeground(Color.black);
                 jLabel7.setForeground(Color.black);
@@ -174,7 +177,9 @@ public class RegisterFrame extends javax.swing.JFrame {
                 username.setForeground(Color.black);
                 ageLabel.setForeground(Color.black);
                 age.setForeground(Color.black);
+            // If the response from registration is 1
             } else if (response == 1){
+                // Give the user an error message for username uniqueness with proper graphics
                 jLabel7.setText("Username is not unique!");
                 extraLabel.setForeground(Color.black);
                 jLabel7.setForeground(Color.red);
@@ -184,7 +189,9 @@ public class RegisterFrame extends javax.swing.JFrame {
                 username.setForeground(Color.red);
                 ageLabel.setForeground(Color.black);
                 age.setForeground(Color.black);
+            // If the response from registration is 2
             } else if (response == 2){
+                // Give the user an error message for password's strength with proper graphics
                 jLabel7.setText("Password is weak!");
                 extraLabel.setForeground(Color.red);
                 jLabel7.setForeground(Color.red);
@@ -195,7 +202,9 @@ public class RegisterFrame extends javax.swing.JFrame {
                 ageLabel.setForeground(Color.black);
                 age.setForeground(Color.black);
             }
+        // If an error was catched
         } catch(NumberFormatException ex){
+            // Give the user an error message for age's improper input with proper graphics
             jLabel7.setText("The age should be integer.");
             extraLabel.setForeground(Color.black);
             jLabel7.setForeground(Color.red);
@@ -209,7 +218,7 @@ public class RegisterFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_registerActionPerformed
 
     private void backToLoginSystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToLoginSystemActionPerformed
-        // TODO add your handling code here:
+        // Close the registration page and open the main page
         setVisible(false);
         LoginSystemFrame.main(null);
     }//GEN-LAST:event_backToLoginSystemActionPerformed

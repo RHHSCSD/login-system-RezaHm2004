@@ -80,13 +80,13 @@ public class LoginSystemFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        // TODO add your handling code here:
+        // Close the main page and open the login page
         setVisible(false);
         LoginFrame.main(null);
     }//GEN-LAST:event_loginActionPerformed
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        // TODO add your handling code here:
+        // Close the main page and open the registration page
         setVisible(false);
         RegisterFrame.main(null);
     }//GEN-LAST:event_RegisterActionPerformed
