@@ -4,6 +4,8 @@
  */
 package loginsystem;
 
+import java.awt.Color;
+
 /**
  *
  * @author rezahm
@@ -31,8 +33,8 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
         password = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
         login = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         backToLoginSystem = new javax.swing.JButton();
@@ -41,9 +43,9 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Login");
 
-        jLabel2.setText("Username");
+        usernameLabel.setText("Username");
 
-        jLabel3.setText("Password");
+        passwordLabel.setText("Password");
 
         login.setText("Login");
         login.addActionListener(new java.awt.event.ActionListener() {
@@ -68,8 +70,8 @@ public class LoginFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(96, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
+                    .addComponent(passwordLabel)
+                    .addComponent(usernameLabel))
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -83,11 +85,12 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addGap(79, 79, 79)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(login))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(177, 177, 177)
                         .addComponent(jLabel4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(login)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,11 +103,11 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(usernameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(passwordLabel))
                 .addGap(38, 38, 38)
                 .addComponent(login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -120,10 +123,25 @@ public class LoginFrame extends javax.swing.JFrame {
         int response = l.login(username.getText(), password.getText());
         if (response == 0){
             jLabel4.setText("You are logged in!");
+            jLabel4.setForeground(Color.black);
+            passwordLabel.setForeground(Color.black);
+            password.setForeground(Color.black);
+            usernameLabel.setForeground(Color.black);
+            username.setForeground(Color.black);
         } else if (response == 1){
             jLabel4.setText("Username does not exist!");
+            jLabel4.setForeground(Color.red);
+            passwordLabel.setForeground(Color.black);
+            password.setForeground(Color.black);
+            usernameLabel.setForeground(Color.red);
+            username.setForeground(Color.red);
         } else if (response == 2){
             jLabel4.setText("Password is wrong!");
+            jLabel4.setForeground(Color.red);
+            passwordLabel.setForeground(Color.red);
+            password.setForeground(Color.red);
+            usernameLabel.setForeground(Color.black);
+            username.setForeground(Color.black);
         }
     }//GEN-LAST:event_loginActionPerformed
 
@@ -171,11 +189,11 @@ public class LoginFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backToLoginSystem;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton login;
     private javax.swing.JTextField password;
+    private javax.swing.JLabel passwordLabel;
     private javax.swing.JTextField username;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }

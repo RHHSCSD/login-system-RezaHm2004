@@ -4,6 +4,8 @@
  */
 package loginsystem;
 
+import java.awt.Color;
+
 /**
  *
  * @author rezahm
@@ -34,28 +36,29 @@ public class RegisterFrame extends javax.swing.JFrame {
         name = new javax.swing.JTextField();
         age = new javax.swing.JTextField();
         gender = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        passwordLabel = new javax.swing.JLabel();
+        ageLabel = new javax.swing.JLabel();
+        genderLabel = new javax.swing.JLabel();
         register = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         backToLoginSystem = new javax.swing.JButton();
+        extraLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Registeration");
 
-        jLabel2.setText("Username");
+        usernameLabel.setText("Username");
 
-        jLabel3.setText("Name");
+        nameLabel.setText("Name");
 
-        jLabel4.setText("Password");
+        passwordLabel.setText("Password");
 
-        jLabel5.setText("Age");
+        ageLabel.setText("Age");
 
-        jLabel6.setText("Gender");
+        genderLabel.setText("Gender");
 
         register.setText("Register");
         register.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +67,7 @@ public class RegisterFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("-----");
 
         backToLoginSystem.setText("< Back");
@@ -73,41 +77,49 @@ public class RegisterFrame extends javax.swing.JFrame {
             }
         });
 
+        extraLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        extraLabel.setText("(minimum 5 letters, upper case, lower, numbers, special)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4)
+                        .addComponent(passwordLabel)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
+                            .addComponent(usernameLabel)
                             .addGap(68, 68, 68)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(username, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                                .addComponent(password))))
+                                .addComponent(username)
+                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                            .addComponent(nameLabel)
+                            .addComponent(ageLabel)
+                            .addComponent(genderLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(gender, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                            .addComponent(age)
-                            .addComponent(name))))
-                .addGap(99, 99, 99))
+                            .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(130, 130, 130))
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(backToLoginSystem)
-                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(register)
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(backToLoginSystem)
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(register)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(extraLabel)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,28 +131,30 @@ public class RegisterFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(usernameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(12, 12, 12)
+                    .addComponent(passwordLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(extraLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(nameLabel))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(ageLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(genderLabel))
                 .addGap(18, 18, 18)
                 .addComponent(register)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -148,13 +162,49 @@ public class RegisterFrame extends javax.swing.JFrame {
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
         // TODO add your handling code here:
-        int response = l.register(username.getText(), password.getText(), name.getText(), Integer.parseInt(age.getText()), gender.getText());
-        if (response == 0){
-            jLabel7.setText("You are logged in!");
-        } else if (response == 1){
-            jLabel7.setText("Username is not unique!");
-        } else if (response == 2){
-            jLabel7.setText("Password is weak!");
+        try{
+            int response = l.register(username.getText(), password.getText(), name.getText(), Integer.parseInt(age.getText()), gender.getText());
+            if (response == 0){
+                jLabel7.setText("You are logged in!");
+                extraLabel.setForeground(Color.black);
+                jLabel7.setForeground(Color.black);
+                passwordLabel.setForeground(Color.black);
+                password.setForeground(Color.black);
+                usernameLabel.setForeground(Color.black);
+                username.setForeground(Color.black);
+                ageLabel.setForeground(Color.black);
+                age.setForeground(Color.black);
+            } else if (response == 1){
+                jLabel7.setText("Username is not unique!");
+                extraLabel.setForeground(Color.black);
+                jLabel7.setForeground(Color.red);
+                passwordLabel.setForeground(Color.black);
+                password.setForeground(Color.black);
+                usernameLabel.setForeground(Color.red);
+                username.setForeground(Color.red);
+                ageLabel.setForeground(Color.black);
+                age.setForeground(Color.black);
+            } else if (response == 2){
+                jLabel7.setText("Password is weak!");
+                extraLabel.setForeground(Color.red);
+                jLabel7.setForeground(Color.red);
+                passwordLabel.setForeground(Color.red);
+                password.setForeground(Color.red);
+                usernameLabel.setForeground(Color.black);
+                username.setForeground(Color.black);
+                ageLabel.setForeground(Color.black);
+                age.setForeground(Color.black);
+            }
+        } catch(NumberFormatException ex){
+            jLabel7.setText("The age should be integer.");
+            extraLabel.setForeground(Color.black);
+            jLabel7.setForeground(Color.red);
+            ageLabel.setForeground(Color.red);
+            age.setForeground(Color.red);
+            passwordLabel.setForeground(Color.black);
+            password.setForeground(Color.black);
+            usernameLabel.setForeground(Color.black);
+            username.setForeground(Color.black);
         }
     }//GEN-LAST:event_registerActionPerformed
 
@@ -201,18 +251,19 @@ public class RegisterFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField age;
+    private javax.swing.JLabel ageLabel;
     private javax.swing.JButton backToLoginSystem;
+    private javax.swing.JLabel extraLabel;
     private javax.swing.JTextField gender;
+    private javax.swing.JLabel genderLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField name;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField password;
+    private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton register;
     private javax.swing.JTextField username;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }
